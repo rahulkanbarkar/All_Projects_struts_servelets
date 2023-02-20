@@ -1,0 +1,81 @@
+
+<struts-config>
+	<form-beans>
+		<form-bean name="login" type="beans.LoginForm"></form-bean>
+		<form-bean name="emp" type="beans.Employee"></form-bean>
+		<form-bean name="admin" type="beans.Admin"> </form-bean>
+		<!-- <form-bean name="findbyname" type="beans.FindByName"></form-bean> -->
+	</form-beans>
+
+	<action-mappings>
+
+		 <action path="/addemp" name="emp"  type="controller.AddEmpAction" parameter="empsave">
+			 <forward name="success"  path="/success.jsp" />
+			<forward name="fail" path="/fail.jsp" /> 
+		</action> 
+		
+		<action path="/empfindbyname" name="emp" type="controller.AddEmpAction" parameter="findbyname">
+		<forward name="findbyname"  path="/success.jsp" />
+			<forward name="fail" path="/fail.jsp" />
+		</action>
+		
+	<!-- 	 this is    --> 
+	
+	 <action path="/addempupdate" name="emp" validate="true" type="controller.AddEmpAction" parameter="empupdate">
+			 <forward name="success"  path="/success.jsp" />
+			<forward name="fail" path="/fail.jsp" /> 
+		</action> 
+		
+		 <action path="/addempdelete" name="emp" validate="true" type="controller.AddEmpAction" parameter="empdelete">
+			 <forward name="success"  path="/success.jsp" />
+			<forward name="fail" path="/fail.jsp" /> 
+		</action> 
+		
+		 <action path="/addempfind" name="emp" validate="true" type="controller.AddEmpAction" parameter="empfind">
+			 <forward name="find"  path="/find.jsp" />
+			
+		</action> 
+		
+		 <action path="/addempfindAll" name="emp" type="controller.importData" parameter="empfindAll">
+			 <forward name="empfindAll"  path="/empfindall.jsp" />
+			 
+			 <action path="/import"  type="controller.AddEmpAction" parameter="submit">
+			 <forward name="success"  path="/empfindall.jsp" />
+		</action> 
+	
+    <!--    Ends hear	 -->
+    
+		<action path="/login" name="login"
+			type="controller.LoginAction" input="/login.jsp">
+			<forward name="login" path="/login.jsp" />
+			<forward name="home" path="/home.jsp" />
+		</action>
+		<action path="/logout" type="controller.LogoutAction">
+			<forward name="logout" path="/logout.jsp"></forward>
+		</action>
+		<action path="/listemp" type="controller.ListEmpAction">
+			<forward name="listemp" path="/listemp.jsp" />
+		</action>
+		
+		<action path="/download" type="controller.downloadfile">
+			<forward name="downloademp" path="/showpicdetails.jsp" />
+		</action>
+		
+	 	<action path="/adminreg" name="admin" type="controller.AddAdminCrud" parameter="submit">
+		<forward name="success" path="/success.jsp" />
+			<forward name="fail" path="/fail.jsp" />
+		    <forward name="reg" path="/reg.jsp"/>
+			</action>
+		
+	</action-mappings>
+	 <message-resources parameter="resources/ApplicationResources"/> 
+<!--  <message-resources parameter="resources/val"></message-resources> -->
+	
+ 
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+ 
+    </plug-in>
+   
+ 
+</struts-config>

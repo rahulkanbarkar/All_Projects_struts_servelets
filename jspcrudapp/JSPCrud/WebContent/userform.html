@@ -1,0 +1,35 @@
+<a href="viewusers.jsp">View All Records</a><br/>
+<html>
+<body>
+ <link rel="stylesheet" href="Userform.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+ <link rel="stylesheet" href="password.jsp">
+ <link rel="stylesheet" href="emailvalidation.jsp">
+
+
+<h1>Add New User</h1>
+<form action="adduser.jsp" method="post">
+<table>
+<tr><td>Name: <span style="color:red; font-weight:bold";>*</span> </td><td> <i class="fa-solid fa-user"></i> <input type="text" pattern="[A-Z a-z]*" name="name" oninvalid="alert('A name must be a letter and cannot contain special caracters or number');" required /></td></tr>
+
+<tr><td>Password:<span style="color:red; font-weight:bold";>*</span> </td><td> <i class="fa-solid fa-lock"></i><input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+</td></tr>
+
+<tr><td>Email: <span style="color:red; font-weight:bold";>*</span> </td><td> <i class="fa-solid fa-envelope"></i> <input type="email" name="email" required/></td></tr>
+
+<tr><td>Sex: <span style="color:red; font-weight:bold";>*</span> </td><td><input type="radio" name="sex" value="male" required/>Male <input type="radio" name="sex" value="female"/>Female </td></tr>
+
+<tr><td>Country: <span style="color:red; font-weight:bold";>*</span> </td><td>
+<select name="country" style="width:155px">
+<option>India</option>
+<option>Pakistan</option>
+<option>Afghanistan</option>
+<option>Berma</option>
+<option>Other</option>
+</select>
+</td></tr>
+<tr><td colspan="2"><input type="submit" onclick="myFunction()" value="Add User"/></td></tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+
+ <struts-config>
+
+ 
+    <form-beans>
+        <form-bean name="employeeForm" type="com.jwt.struts.form.EmployeeForm" />
+    </form-beans>
+ 
+    <action-mappings>
+ 
+        <action path="/Register" type="com.jwt.struts.action.EmployeeAction" name="employeeForm" input="/EmployeeRgister.jsp">
+            <forward name="success" path="/success.jsp" />
+        </action>
+    </action-mappings>	
+ 
+    <message-resources parameter="com.jwt.struts.action.ApplicationResources" />
+ 
+ 
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml, /WEB-INF/validation.xml" />
+ 
+    </plug-in>
+ 
+</struts-config>
